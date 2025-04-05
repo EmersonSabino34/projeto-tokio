@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Sabor</title>
+</head>
+<body>
+    <!-- flex box:  -->
+    <!-- Position:  -->
+    <header>
+        <div class="logo">
+            <img width="120" src="https://static.vecteezy.com/system/resources/previews/024/284/682/non_2x/restaurant-logo-5-png.png" alt="">
+        </div>
+        
+        <nav>
+            <ul>
+                <li> <a href="#"> Home </a> </li>
+                <li> <a href="#menu"> Menu </a> </li>
+                <li> <a href="#especialidades"> Especialidades </a> </li>
+                <li> <a href="#menu_grupos"> Pratos </a> </li>
+                <li> <a href="#reservas"> Reservas </a> </li>
+            </ul>
+        </nav>
+        
+        <div class="contato"> <!-- Mudar o icone -->
+            <button class="btn-show" id="mobile" onclick="fn_mostrar_menu()"> <i class="bi bi-arrow-left-circle"></i> </button>
+            <button id="desktop">Desktop</button>
+        </div>
+
+          <!-- MENU MOBILE-->
+        <div id="menuMobile"  class="esconder">
+            <nav>
+                <ul>
+                    <li> <a href="#"> Home </a> </li>
+                    <li> <a href="#menu"> Menu </a> </li>
+                    <li> <a href="#especialidades"> Especialidades </a> </li>
+                    <li> <a href="#menu_grupos"> Pratos </a> </li>
+                    <li> <a href="#reservas"> Reservas </a> </li>
+                </ul>
+                <button id="menu-close" onclick="fn_esconder_menu()" > <!-- Mudar o icone -->
+                    <h3>Sair</h3>
+                    <i class="bi bi-arrow-down-right-circle"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+  
+    <!-- PAGINA 1 HOME -->
+    <section id="home">
+         <h1>Home</h1> 
+    </section>
+    
+    <!-- PAGINA 2 Especialidades -->
+    <section id="especialidades"> 
+        <h1>Especialidades</h1>
+        <ul>
+            <li>Churrasco</li>
+            <li>Macarrão</li>
+        </ul>
+    </section>
+    
+    <!-- PAGINA 3 Menu -->
+    <section id="menu"> 
+        <h1>Menu</h1> 
+    </section>
+    
+    <!-- PAGINA 4 Menu Grupo -->
+    <section id="Menu grupos"> 
+        <h1>Menu grupos</h1> 
+    </section>
+    
+    <!-- PAGINA 5 Reservas -->
+    <section id="reservas"> 
+        <h1>Reservas</h1> 
+    </section>
+
+    <script>
+        function fn_esconder_menu(){
+            document.querySelector("#menuMobile").classList.add("esconder")
+        }
+        function fn_mostrar_menu(){
+
+            document.querySelector("#menuMobile").classList.remove("esconder")
+            }
+    </script>
+</body>
+</html>

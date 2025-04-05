@@ -1,0 +1,108 @@
+/* AREA DE RESET LAYOUT */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    list-style: none;
+    text-decoration: none;
+}
+button{
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    background-color: transparent;
+}
+/* HEADER flex */
+header{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: coral;
+
+    padding: 0px 100px;
+
+    top: 0;
+    position: sticky;
+}
+header nav ul{
+
+    gap: 10px;
+    display: flex;
+}
+#mobile{
+    display: none;
+}
+#menuMobile{ /* efeito para mostrar o menu*/
+    padding: 10px;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 70vh;
+    position: absolute;
+    background-color: chartreuse;
+}
+.esconder{ display: none; }
+
+#menu-mobile ul{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+nav #menu-close{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 10px;
+    width: 150px;
+}
+
+nav #menu-close .bi-arrow-down-right-circle{
+    font-size: 40px;
+}
+
+/* SECTION 1 RESTAURANTE */
+#home{
+    height: 85vh;
+    background-color: bisque;
+}
+/* SECTION 2 RESTAURANTE */
+#especialidades{
+    height: 85vh;
+    background-color: blueviolet;
+}
+
+/* responsivo */
+
+/* HEADER flex */
+
+@media (max-width: 700px) {
+    header{
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    header .contato #mobile{
+        font-size: 40px;
+    }
+    header .logo{
+        margin-left: 0;
+        margin-right: 100px;
+    }
+    header nav ul{
+        display: none;
+    }
+    #mobile{
+        display: block;
+    }
+    #desktop{
+        display: none;
+    }
+    
+}
+
+
+/* SECTION 1 RESTAURANTE */
+/* SECTION 2 RESTAURANTE */
