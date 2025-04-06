@@ -105,6 +105,8 @@ nav #menu-close .bi-arrow-down-right-circle{
 
 
 /* SECTION 1 RESTAURANTE */
+
+
 /* SECTION 2 RESTAURANTE */
 body {
     margin: 0;
@@ -170,5 +172,42 @@ body {
   .info strong {
     color: #2c7a36;
     font-size: 1.1em;
+  }
+  
+  /* SECTION 3 RESTAURANTE */
+  #navegacao-interna {
+    padding: 40px 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+  }
+  
+  #navegacao-interna h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .menu-interno ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-interno ul li a {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #444;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .menu-interno ul li a:hover {
+    background-color: #c0392b;
+    color: #fff;
   }
   
