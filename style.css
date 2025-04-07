@@ -210,4 +210,91 @@ body {
     background-color: #c0392b;
     color: #fff;
   }
+  #menu_grupos {
+    padding: 50px 20px;
+    background-color: #fefefe;
+    text-align: center;
+  }
+  
+  #menu_grupos h1 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .menu-grupos-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-grupos-nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-grupos-nav ul li a:hover {
+    background-color: #c0392b;
+  }
+  #reservas {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  #reservas h1 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .form-reserva {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .campo label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .campo input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+  }
+  
+  button[type="submit"] {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #c0392b;
+  }
   
