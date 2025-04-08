@@ -1,181 +1,251 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monteiro Grill</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monteiro Grill</title>
 </head>
+
 <body>
-    <!-- flex box:  -->
-    <!-- Position:  -->
-    <header>
-        <div class="logo">
-            <img width="120" src="/img/logo-restaurante.webp" alt="">
-        </div>
-        
-        <nav>
-            <ul>
-                <li> <a href="#"> Home </a> </li>
-                <li> <a href="#menu"> Menu </a> </li>
-                <li> <a href="#especialidades"> Especialidades </a> </li>
-                <li> <a href="#menu_grupos"> Pratos </a> </li>
-                <li> <a href="#reservas"> Reservas </a> </li>
-            </ul>
-        </nav>
-        
-        <div class="contato"> <!-- Mudar o icone -->
-            <button class="btn-show" id="mobile" onclick="fn_mostrar_menu()"> <i class="bi bi-arrow-left-circle"></i> </button>
-            <button id="desktop">Desktop</button>
-        </div>
+  <!-- HEADER -->
+  <header class="container" id="s">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="/img/logo-restaurante.webp" alt="Monteiro Grill" />
+    </div>
 
-          <!-- MENU MOBILE-->
-        <div id="menuMobile"  class="esconder">
-            <nav>
-                <ul>
-                    <li> <a href="#"> Home </a> </li>
-                    <li> <a href="#menu"> Menu </a> </li>
-                    <li> <a href="#especialidades"> Especialidades </a> </li>
-                    <li> <a href="#menu_grupos"> Pratos </a> </li>
-                    <li> <a href="#reservas"> Reservas </a> </li>
-                </ul>
-                <button id="menu-close" onclick="fn_esconder_menu()" > <!-- Mudar o icone -->
-                    <h3>Sair</h3>
-                    <i class="bi bi-arrow-down-right-circle"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-  
-    <!-- PAGINA 1 HOME -->
-    <section id="home">
-         <h1>Home</h1> 
-    </section>
-    
-    <!-- PAGINA 2 Especialidades -->
-   
-    <section id="especialidades">
-        <h1>Especialidades</h1>
-    
-        <div class="cards">
-          <!-- Card 1 -->
-          <div class="prato">
-            <img src="img/picanha.jpg" alt="Costela Completa">
-            <div class="info">
-              <h3>picanha</h3>
-              <p>Picanha servida com arroz branco, vinagrete e farofa crocante.</p>
-              <strong>25,00€</strong>
-            </div>
-          </div>
-    
-          <!-- Card 2 -->
-          <div class="prato">
-            <img src="img/feijoada.webp" alt="Feijoada">
-            <div class="info">
-              <h3>Feijoada Brasileira</h3>
-              <p>Feijão preto com carnes suínas, arroz, couve e farofa.</p>
-              <strong>22,00€</strong>
-            </div>
-          </div>
-    
-          <!-- Card 3 -->
-          <div class="prato">
-            <img src="img/peito de frango.jpg" alt="Frango Grelhado">
-            <div class="info">
-              <h3>Frango Grelhado</h3>
-              <p>Peito de frango grelhado com legumes salteados e arroz integral.</p>
-              <strong>20,00€</strong>
-            </div>
-          </div>
-    
-          <!-- Card 4 -->
-          <div class="prato">
-            <img src="img/lasanha.png" alt="Lasanha à Bolonhesa">
-            <div class="info">
-              <h3>Lasanha à Bolonhesa</h3>
-              <p>Lasanha com molho bolonhesa, queijo gratinado e ervas frescas.</p>
-              <strong>21,50€</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-        <ul>
-            <li>Churrasco</li>
-            <li>Macarrão</li>
-        </ul>
-    </section>
-    
-    <!-- PAGINA 3 Menu -->
-    <section id="navegacao-interna">
-      <h2>Explore o Menu</h2>
-      <nav class="menu-interno">
-        <ul>
-          <li><a href="#entradas">Entradas</a></li>
-          <li><a href="#principais">Pratos Principais</a></li>
-          <li><a href="#sobremesas">Sobremesas</a></li>
-          <li><a href="#bebidas">Bebidas</a></li>
-        </ul>
-      </nav>
-    </section>
-    
-    
-    <!-- PAGINA 4 Menu Grupo -->
-    <section id="menu_grupos">
-      <h1>Menu Grupos</h1>
-    
-      <nav class="menu-grupos-nav">
-        <ul>
-          <li><a href="#entradas">Entradas</a></li>
-          <li><a href="#principais">Pratos Principais</a></li>
-          <li><a href="#sobremesas">Sobremesas</a></li>
-          <li><a href="#bebidas">Bebidas</a></li>
-        </ul>
-      </nav>
-    </section>
-    
-    
-    <!-- PAGINA 5 Reservas -->
-    <section id="reservas">
-      <h1>Faça sua Reserva</h1>
-      <form class="form-reserva" action="#" method="post">
-        <div class="campo">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required>
-        </div>
-    
-        <div class="campo">
-          <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
-        </div>
-    
-        <div class="campo">
-          <label for="data">Data:</label>
-          <input type="date" id="data" name="data" required>
-        </div>
-    
-        <div class="campo">
-          <label for="hora">Hora:</label>
-          <input type="time" id="hora" name="hora" required>
-        </div>
-    
-        <div class="campo">
-          <label for="pessoas">Nº de Pessoas:</label>
-          <input type="number" id="pessoas" name="pessoas" min="1" required>
-        </div>
-    
-        <button type="submit">Reservar Agora</button>
-      </form>
-    </section>
-    
-    <script>
-        function fn_esconder_menu(){
-            document.querySelector("#menuMobile").classList.add("esconder")
-        }
-        function fn_mostrar_menu(){
+    <!-- MENU DESKTOP -->
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#menu_grupos">Pratos</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+      </ul>
+    </nav>
 
-            document.querySelector("#menuMobile").classList.remove("esconder")
-            }
-    </script>
+    <!-- BOTÃO CONTATO / MENU MOBILE -->
+    <div class="contato">
+      <button id="mobile" onclick="fn_mostrar_menu()"><i class="bi bi-list"></i></button>
+    </div>
+
+    <!-- MENU MOBILE -->
+    <div id="menuMobile" class="menu-mobile esconder">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#menu_grupos">Pratos</a></li>
+          <li><a href="#reservas">Reservas</a></li>
+        </ul>
+        <button onclick="fn_esconder_menu()">
+          <h3>Fechar</h3>
+          <i class="bi bi-x-circle"></i>
+        </button>
+      </nav>
+    </div>
+    
+  </header>
+
+  <!-- SECTION HOME -->
+  <section id="home" class="container section">
+    <h1>Bem-vindo ao Monteiro Grill</h1>
+  </section>
+
+  <!-- SECTION ESPECIALIDADES -->
+  <section id="especialidades" class="container section">
+    <h1>Especialidades</h1>
+    <div class="cards">
+      <!-- Card Prato 1 -->
+      <div class="prato">
+        <img src="img/picanha.jpg" alt="Picanha">
+        <div class="info">
+          <h3>Picanha</h3>
+          <p>Picanha com arroz branco, vinagrete e farofa crocante.</p>
+          <strong>25,00€</strong>
+        </div>
+      </div>
+      <!-- Card Prato 2 -->
+      <div class="prato">
+        <img src="img/feijoada.webp" alt="Feijoada">
+        <div class="info">
+          <h3>Feijoada Brasileira</h3>
+          <p>Feijão preto com carnes suínas, arroz, couve e farofa.</p>
+          <strong>22,00€</strong>
+        </div>
+      </div>
+      <!-- Card Prato 3 -->
+      <div class="prato">
+        <img src="img/peito de frango.jpg" alt="Frango">
+        <div class="info">
+          <h3>Frango Grelhado</h3>
+          <p>Frango grelhado com legumes e arroz integral.</p>
+          <strong>20,00€</strong>
+        </div>
+      </div>
+      <!-- Card Prato 4 -->
+      <div class="prato">
+        <img src="img/lasanha.png" alt="Lasanha">
+        <div class="info">
+          <h3>Lasanha à Bolonhesa</h3>
+          <p>Lasanha com molho bolonhesa e queijo gratinado.</p>
+          <strong>21,50€</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION MENU GRUPOS -->
+  <section id="menu_grupos" class="container section">
+    <h1>Menu Grupos</h1>
+    <div class="sugestoes-grupo">
+      <!-- Card Sugestão 1 -->
+      <div class="card-sugestao">
+        <img src="./img/salmao.jpg" alt="Peixe para grupos">
+        <h2>Peixe Completo</h2>
+        <p>Variedade de peixes com acompanhamentos e molhos.</p>
+      </div>
+      <!-- Card Sugestão 2 -->
+      <div class="card-sugestao">
+        <img src="./img/carne mista.jpg" alt="Carne mista">
+        <h2>Festival de Carnes</h2>
+        <p>carnes e molhos variados e saladas.</p>
+      </div>
+
+      <!-- Card Sugestão 2 -->
+      <div class="card-sugestao">
+        <img src="./img/carne mista.jpg" alt="Carne mista">
+        <h2>Festival de Carnes</h2>
+        <p>carnes e molhos variados e saladas.</p>
+      </div>
+
+      <!-- Card Sugestão 2 -->
+      <div class="card-sugestao">
+        <img src="./img/carne mista.jpg" alt="Carne mista">
+        <h2>Festival de Carnes</h2>
+        <p>carnes e molhos variados e saladas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION RESERVAS -->
+  <section id="reservas" class="container section">
+    <h1>Faça sua Reserva</h1>
+    <form class="form-reserva">
+      <div class="campo">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+      </div>
+      <div class="campo">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+      </div>
+      <div class="campo">
+        <label for="data">Data:</label>
+        <input type="date" id="data" required>
+      </div>
+      <div class="campo">
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" required>
+      </div>
+      <div class="campo">
+        <label for="pessoas">Nº de Pessoas:</label>
+        <input type="number" id="pessoas" min="1" required>
+      </div>
+      <button type="submit">Reservar Agora</button>
+    </form>
+  </section>
+
+  <!-- SECTION ENTRADAS -->
+  <section id="entradas" class="container section">
+    <h1>Entradas</h1>
+    <div class="cards">
+      <!-- Card Entrada 1 -->
+      <div class="prato">
+        <img src="img/bolinho-de-bacalhau.jpg" alt="Bolinho de Bacalhau">
+        <div class="info">
+          <h3>Bolinho de Bacalhau</h3>
+          <p>Tradicional bolinho português, crocante por fora e macio por dentro.</p>
+          <strong>8,00€</strong>
+        </div>
+      </div>
+      <!-- Card Entrada 2 -->
+      <div class="prato">
+        <img src="img/salada-tropical.jpg" alt="Salada Tropical">
+        <div class="info">
+          <h3>Salada Tropical</h3>
+          <p>Mix de folhas, frutas frescas, nozes e molho especial.</p>
+          <strong>7,50€</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION SOBREMESAS -->
+  <section id="sobremesas" class="container section">
+    <h1>Sobremesas</h1>
+    <div class="cards">
+      <!-- Card Sobremesa 1 -->
+      <div class="prato">
+        <img src="img/pudim.jpg" alt="Pudim de Leite">
+        <div class="info">
+          <h3>Pudim de Leite</h3>
+          <p>Cremoso e com calda dourada de caramelo.</p>
+          <strong>5,00€</strong>
+        </div>
+      </div>
+      <!-- Card Sobremesa 2 -->
+      <div class="prato">
+        <img src="img/mousse-chocolate.jpg" alt="Mousse de Chocolate">
+        <div class="info">
+          <h3>Mousse de Chocolate</h3>
+          <p>Feita com chocolate meio amargo e raspas de cacau.</p>
+          <strong>5,50€</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION BEBIDAS -->
+  <section id="bebidas" class="container section">
+    <h1>Bebidas</h1>
+    <div class="cards">
+      <!-- Card Bebida 1 -->
+      <div class="prato">
+        <img src="img/suco-natural.jpg" alt="Suco Natural">
+        <div class="info">
+          <h3>Suco Natural</h3>
+          <p>Opções de laranja, abacaxi, morango ou manga.</p>
+          <strong>3,50€</strong>
+        </div>
+      </div>
+      <!-- Card Bebida 2 -->
+      <div class="prato">
+        <img src="img/caipirinha.jpg" alt="Caipirinha">
+        <div class="info">
+          <h3>Caipirinha</h3>
+          <p>Tradicional drink brasileiro com limão, açúcar e cachaça.</p>
+          <strong>6,00€</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCRIPTS -->
+  <script>
+    function fn_esconder_menu() {
+      document.querySelector("#menuMobile").classList.add("esconder");
+    }
+    function fn_mostrar_menu() {
+      document.querySelector("#menuMobile").classList.remove("esconder");
+    }
+  </script>
 </body>
+
 </html>

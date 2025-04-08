@@ -1,300 +1,332 @@
-/* AREA DE RESET LAYOUT */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    list-style: none;
-    text-decoration: none;
-}
-button{
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-    background-color: transparent;
-}
-/* HEADER flex */
-header{
-    height: 15vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-
-    padding: 0px 100px;
-
-    top: 0;
-    position: sticky;
-}
-header nav ul{
-
-    gap: 10px;
-    display: flex;
-}
-#mobile{
-    display: none;
-}
-#menuMobile{ /* efeito para mostrar o menu*/
-    padding: 10px;
-    top: 0;
-    right: 0;
-    width: 40%;
-    height: 70vh;
-    position: absolute;
-    background-color: chartreuse;
-}
-.esconder{ display: none; }
-
-#menu-mobile ul{
-    gap: 20px;
-    display: flex;
-    flex-direction: column;
-}
-nav #menu-close{
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: space-between;
-    bottom: 10px;
-    width: 150px;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav #menu-close .bi-arrow-down-right-circle{
-    font-size: 40px;
-}
-
-/* SECTION 1 RESTAURANTE */
-#home{
-    height: 85vh;
-    background-color: bisque;
-}
-/* SECTION 2 RESTAURANTE */
-#especialidades{
-    height: 85vh;
-    background-color: blueviolet;
-}
-
-/* responsivo */
-
-/* HEADER flex */
-
-@media (max-width: 700px) {
-    header{
-        width: 100vw;
-        display: flex;
-        justify-content: space-between;
-    }
-    header .contato #mobile{
-        font-size: 40px;
-    }
-    header .logo{
-        margin-left: 0;
-        margin-right: 100px;
-    }
-    header nav ul{
-        display: none;
-    }
-    #mobile{
-        display: block;
-    }
-    #desktop{
-        display: none;
-    }
-    
-}
-
-
-/* SECTION 1 RESTAURANTE */
-
-
-/* SECTION 2 RESTAURANTE */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fdfdfd;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fefefe;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+header {
+  display: flex;
+
+  color: #fff;
+  position: sticky;
+  align-items: center;
+  padding: 0rem 2rem;
+  background: #9e9797;
+  justify-content: space-around;
+  top: 0;
+  z-index: 1000;
+}
+.logo img {
+  width: 100px;
+}
+
+.nav-desktop ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+
+}
+
+.nav-desktop a {
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: 500;
+
+  transition: .3s;
+}
+
+.nav-desktop a:hover {
+  cursor: pointer;
+  background-color: coral;
+
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.contato button {
+  background: transparent;
+  border: none;
+  color: transparent;
+  font-size: 1.5rem;
+}
+
+.menu-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #222;
+  width: 70%;
+  height: 100%;
+  padding: 2rem;
+  color: #fff;
+}
+
+.menu-mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu-mobile a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-mobile.esconder {
+  display: none;
+}
+
+.section h1,
+.section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #222;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.prato, .card-sugestao {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  max-width: 280px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.prato:hover, .card-sugestao:hover {
+  transform: scale(1.03);
+}
+
+.prato img, .card-sugestao img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.info, .card-sugestao {
+  padding: 1rem;
+}
+
+.form-reserva {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #ccc;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.campo input {
+  padding: 0.7rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background: #d72638;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #a51e2d;
+}
+
+.menu-grupos-nav ul,
+.menu-interno ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.menu-grupos-nav a,
+.menu-interno a {
+  text-decoration: none;
+  color: #d72638;
+  font-weight: 600;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Títulos */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #b33;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+strong {
+  color: #b33;
+  font-size: 1.2rem;
+}
+
+/* Seções */
+.section {
+  padding: 60px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Cards de pratos */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.prato {
+  width: 260px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fafafa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.prato:hover {
+  transform: translateY(-5px);
+}
+
+.prato img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.prato .info {
+  padding: 15px;
+}
+
+/* Formulário de reservas */
+.form-reserva {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-reserva .campo {
+  margin-bottom: 15px;
+}
+
+.form-reserva label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-reserva input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.form-reserva button {
+  width: 100%;
+  padding: 12px;
+  background-color: #b33;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form-reserva button:hover {
+  background-color: #922;
+}
+
+.sugestoes-grupo{
+  gap: 20px;
+  display: flex;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
   }
-  
-  #especialidades {
-    padding: 40px;
-    text-align: center;
-  }
-  
-  #especialidades h1 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
+
   .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .prato {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .prato:hover {
-    transform: translateY(-5px);
-  }
-  
-  .prato img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .info {
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .info h3 {
-    margin: 0 0 10px;
-    font-size: 1.3em;
-    color: #222;
-  }
-  
-  .info p {
-    margin: 0 0 15px;
-    color: #555;
-  }
-  
-  .info strong {
-    color: #2c7a36;
-    font-size: 1.1em;
-  }
-  
-  /* SECTION 3 RESTAURANTE */
-  #navegacao-interna {
-    padding: 40px 20px;
-    background-color: #f8f8f8;
-    text-align: center;
-  }
-  
-  #navegacao-interna h2 {
-    margin-bottom: 20px;
-    font-size: 2em;
-    color: #333;
-  }
-  
-  .menu-interno ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .menu-interno ul li a {
-    text-decoration: none;
-    font-size: 1.1em;
-    color: #444;
-    padding: 10px 20px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .menu-interno ul li a:hover {
-    background-color: #c0392b;
-    color: #fff;
-  }
-  #menu_grupos {
-    padding: 50px 20px;
-    background-color: #fefefe;
-    text-align: center;
-  }
-  
-  #menu_grupos h1 {
-    font-size: 2em;
-    margin-bottom: 25px;
-    color: #333;
-  }
-  
-  .menu-grupos-nav ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .menu-grupos-nav ul li a {
-    display: block;
-    padding: 10px 20px;
-    background-color: #e74c3c;
-    color: #fff;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-  }
-  
-  .menu-grupos-nav ul li a:hover {
-    background-color: #c0392b;
-  }
-  #reservas {
-    padding: 60px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-  }
-  
-  #reservas h1 {
-    font-size: 2.2em;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .form-reserva {
-    max-width: 600px;
-    margin: 0 auto;
-    display: grid;
-    gap: 20px;
-  }
-  
-  .campo {
-    display: flex;
     flex-direction: column;
-    text-align: left;
+    align-items: center;
   }
-  
-  .campo label {
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #333;
+
+  .menu-mobile {
+    width: 100%;
   }
-  
-  .campo input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
+  .prato {
+    width: 90%;
   }
-  
-  button[type="submit"] {
-    padding: 12px 30px;
-    font-size: 1.1em;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .contato button {
+    color: white;
   }
-  
-  button[type="submit"]:hover {
-    background-color: #c0392b;
-  }
-  
+}
