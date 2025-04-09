@@ -25,10 +25,13 @@ header {
   position: sticky;
   align-items: center;
   padding: 0rem 2rem;
-  background: #9e9797;
+  background: coral;
   justify-content: space-around;
   top: 0;
   z-index: 1000;
+
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 .logo img {
   width: 100px;

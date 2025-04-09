@@ -1,5 +1,9 @@
 > ### Projeto Restaurante
 
+<img src="./screen/home.png" alt="" />
+
+> #### Telas do projeto
+
 > * Tecnlogias
 
 > * HTML5
