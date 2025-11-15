@@ -8,7 +8,7 @@
 
 > * HTML5
 > * CSS3
-> * Javascript
+> * Javascript 1
 > * Bootstrap Icons
 
 #### Requisitos Avaliativos
