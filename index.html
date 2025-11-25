@@ -1,462 +1,455 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monteiro Grill - Churrascaria & Restaurante Português</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons + Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monteiro Grill</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #9A3412;
+      --secondary: #F97316;
+      --accent: #F4A261;
+      --dark: #2C1810;
+      --light: #FAF9F9;
+      --gray: #6B7280;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background:var(--light); color:var(--dark); line-height:1.6; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* Header fixo */
+    header {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .container { width: 90%; max-width: 1300px; margin: 0 auto; padding: 1rem 0; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 65px; }
+    .nav-desktop ul { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-desktop a { text-decoration: none; color: var(--dark); font-weight: 500; transition:0.3s; }
+    .nav-desktop a:hover { color: var(--primary); }
+
+    /* Menu Mobile */
+    #mobile-menu-btn { font-size: 2.2rem; cursor: pointer; color: var(--primary); display: none; }
+    .mobile-menu {
+      position: fixed;
+      top: 0; left: -100%;
+      width: 100%; height: 100vh;
+      background: var(--dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: left 0.4s ease;
+      z-index: 999;
+    }
+    .mobile-menu.active { left: 0; }
+    .mobile-menu ul { text-align: center; }
+    .mobile-menu a { color: white; font-size: 2rem; text-decoration: none; display: block; padding: 1rem; }
+    .close-mobile { position: absolute; top: 30px; right: 30px; font-size: 3rem; cursor: pointer; }
+
+    /* Hero */
+    #home {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    #home h1 { font-size: 5rem; margin-bottom: 1rem; }
+    #home p { font-size: 1.5rem; max-width: 800px; }
+
+    /* Seções */
+    .section { padding: 120px 0; }
+    .section h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 4rem;
+      color: var(--primary);
+      position: relative;
+    }
+    .section h1::after {
+      content: '';
+      width: 120px;
+      height: 5px;
+      background: var(--secondary);
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2.5rem;
+    }
+    .prato, .card-sugestao {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      transition: all 0.4s;
+    }
+    .prato:hover, .card-sugestao:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+    .prato img, .card-sugestao img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+    .info {
+      padding: 1.8rem;
+      text-align: center;
+    }
+    .info h3 { margin: 0.8rem 0; color: var(--primary); font-size: 1.6rem; }
+    .info p { color: var(--gray); margin-bottom: 1rem; }
+    .info strong { font-size: 1.8rem; color: var(--secondary); }
+
+    /* Formulário */
+    .form-reserva {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 3.5rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .campo { margin-bottom: 1.8rem; }
+    .campo label { display: block; margin-bottom: 0.6rem; font-weight: 600; }
+    .campo input, .campo textarea {
+      width: 100%;
+      padding: 1.1rem;
+      border: 2px solid #e2e2e2;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .campo input:focus, .campo textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    button[type="submit"] {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1.2rem;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+    button[type="submit"]:hover { background: #7f2a0d; }
+
+    /* Footer */
+    footer { background: var(--dark); color: #eee; padding: 100px 0 40px; }
+    footer .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 3rem; }
+    footer h3 { color: var(--accent); margin-bottom: 1.5rem; }
+    footer a { color: #ccc; text-decoration: none; }
+    footer a:hover { color: var(--secondary); }
+    #social ul { display: flex; gap: 1.5rem; margin-top: 1rem; }
+    #social i { font-size: 2rem; transition: 0.3s; }
+    #social a:hover i { color: var(--secondary); }
+
+    @media (max-width: 768px) {
+      #mobile-menu-btn { display: block; }
+      .nav-desktop { display: none; }
+      #home h1 { font-size: 3.5rem; }
+      .section { padding: 90px 0; }
+    }
+  </style>
 </head>
-
 <body>
+
   <!-- HEADER -->
-  <header class="container" id="s">
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="/img/logo-restaurante.webp" alt="Monteiro Grill" />
-    </div>
-
-    <!-- MENU DESKTOP -->
-    <nav class="nav-desktop">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#especialidades">Especialidades</a></li>
-        <li><a href="#menu_grupos">Pratos</a></li>
-        <li><a href="#reservas">Reservas</a></li>
-      </ul>
-    </nav>
-
-    <!-- BOTÃO CONTATO / MENU MOBILE -->
-    <div class="contato">
-      <button id="mobile" onclick="fn_mostrar_menu()"><i class="bi bi-list"></i></button>
-    </div>
-
-    <!-- MENU MOBILE -->
-    <div id="menuMobile" class="menu-mobile esconder">
-      <nav>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="/img/logo-restaurante.webp" alt="Monteiro Grill">
+      </div>
+      <nav class="nav-desktop">
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="#home">Home</a></li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#menu_grupos">Pratos</a></li>
+          <li><a href="#menu_grupos">Menu Grupos</a></li>
           <li><a href="#reservas">Reservas</a></li>
         </ul>
-        <button onclick="fn_esconder_menu()">
-          <h3>Fechar</h3>
-          <i class="bi bi-x-circle"></i>
-        </button>
       </nav>
+      <div id="mobile-menu-btn"><i class="bi bi-list"></i></div>
     </div>
-
   </header>
 
-  <!-- SECTION HOME -->
-  <section id="home" class="container section">
-    <h1>Bem-vindo ao Monteiro Grill</h1>
+  <!-- MENU MOBILE -->
+  <div class="mobile-menu" id="mobileMenu">
+    <i class="bi bi-x close-mobile" id="closeMobile"></i>
+    <nav>
+      <ul>
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#menu" onclick="toggleMenu()">Menu</a></li>
+        <li><a href="#especialidades" onclick="toggleMenu()">Especialidades</a></li>
+        <li><a href="#menu_grupos" onclick="toggleMenu()">Menu Grupos</a></li>
+        <li><a href="#reservas" onclick="toggleMenu()">Reservas</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="section">
+    <div>
+      <h1>Monteiro Grill</h1>
+      <p>O melhor da culinária portuguesa e brasileira em um só lugar. Sabores inesquecíveis desde 2020.</p>
+    </div>
   </section>
 
-  <!-- SECTION ESPECIALIDADES 1-->
-  <section id="menu" class="container section">
-    <h1>Menu</h1>
+  <!-- MENU PRINCIPAL -->
+  <section id="menu" class="section container">
+    <h1>Nosso Cardápio</h1>
     <div class="cards">
-      <!-- Card Prato 1 -->
       <div class="prato">
         <img src="img/picanha.jpg" alt="Picanha">
-        <div class="info">
-          <h3>Picanha</h3>
-          <p>Picanha com arroz branco, vinagrete e farofa crocante.</p>
-          <strong>25,00€</strong>
-        </div>
+        <div class="info"><h3>Picanha Premium</h3><p>Picanha com arroz branco, vinagrete e farofa crocante.</p><strong>25,00€</strong></div>
       </div>
-      <!-- Card Prato 2 -->
       <div class="prato">
         <img src="img/carbonara.jpg" alt="Carbonara">
-        <div class="info">
-          <h3>Carbonara</h3>
-          <p>Carbonara saborosa.</p>
-          <strong>22,00€</strong>
-        </div>
+        <div class="info"><h3>Espaguete à Carbonara</h3><p>Carbonara tradicional com bacon crocante e parmesão.</p><strong>22,00€</strong></div>
       </div>
-      <!-- Card Prato 3 -->
       <div class="prato">
         <img src="img/polvo.jpg" alt="Polvo">
-        <div class="info">
-          <h3>Polvo Grelhado</h3>
-          <p>Polvo grelhado com legumes e arroz integral.</p>
-          <strong>20,00€</strong>
-        </div>
+        <div class="info"><h3>Polvo Grelhado</h3><p>Polvo tenro com legumes salteados e arroz integral.</p><strong>20,00€</strong></div>
       </div>
-      <!-- Card Prato 4 -->
       <div class="prato">
-        <img src="img/salmao.jpg" alt="Salmao">
-        <div class="info">
-          <h3>Salmao Grelhado
-             </h3>
-          <p>Salmao Grelhado.</p>
-          <strong>21,50€</strong>
-        </div>
+        <img src="img/salmao.jpg" alt="Salmão">
+        <div class="info"><h3>Salmão Grelhado</h3><p>Salmão com molho de maracujá e legumes.</p><strong>21,50€</strong></div>
       </div>
-      <!-- Card Prato 1 -->
       <div class="prato">
         <img src="img/bacalhau.jpg" alt="Bacalhau">
-        <div class="info">
-          <h3>Bacalhau</h3>
-          <p>Bacalhau e molhos variados e saladas.</p>
-          <strong>25,00€</strong>
-        </div>
+        <div class="info"><h3>Bacalhau à Lagareiro</h3><p>Com azeite, alho, batata ao murro e brócolis.</p><strong>25,00€</strong></div>
       </div>
-      <!-- Card Prato 2 -->
       <div class="prato">
         <img src="img/feijoada.webp" alt="Feijoada">
-        <div class="info">
-          <h3>Feijoada Brasileira</h3>
-          <p>Feijão preto com carnes suínas, arroz, couve e farofa.</p>
-          <strong>22,00€</strong>
-        </div>
+        <div class="info"><h3>Feijoada Brasileira</h3><p>Completa com carnes suínas, arroz, couve, farofa e laranja.</p><strong>22,00€</strong></div>
       </div>
-      <!-- Card Prato 3 -->
       <div class="prato">
         <img src="img/peito de frango.jpg" alt="Frango">
-        <div class="info">
-          <h3>Frango Grelhado</h3>
-          <p>Frango grelhado com legumes e arroz integral.</p>
-          <strong>20,00€</strong>
-        </div>
+        <div class="info"><h3>Frango Grelhado</h3><p>Peito de frango com legumes e arroz integral.</p><strong>20,00€</strong></div>
       </div>
-      <!-- Card Prato 4 -->
       <div class="prato">
         <img src="img/lasanha.png" alt="Lasanha">
-        <div class="info">
-          <h3>Lasanha à Bolonhesa</h3>
-          <p>Lasanha com molho bolonhesa e queijo gratinado.</p>
-          <strong>21,50€</strong>
-        </div>
+        <div class="info"><h3>Lasanha à Bolonhesa</h3><p>Camadas de massa, molho bolonhesa e queijo gratinado.</p><strong>21,50€</strong></div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION ESPECIALIDADES 1-->
-  <section id="especialidades" class="container section">
-    <h1>Especialidades</h1>
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades" class="section container">
+    <h1>Nossas Especialidades</h1>
     <div class="cards">
-      <!-- Card Prato 1 -->
       <div class="prato">
         <img src="img/picanha.jpg" alt="Picanha">
-        <div class="info">
-          <h3>Picanha</h3>
-          <p>Picanha com arroz branco, vinagrete e farofa crocante.</p>
-          <strong>25,00€</strong>
-        </div>
+        <div class="info"><h3>Picanha Premium</h3><p>A estrela da casa!</p><strong>25,00€</strong></div>
       </div>
-      <!-- Card Prato 2 -->
       <div class="prato">
         <img src="img/feijoada.webp" alt="Feijoada">
-        <div class="info">
-          <h3>Feijoada Brasileira</h3>
-          <p>Feijão preto com carnes suínas, arroz, couve e farofa.</p>
-          <strong>22,00€</strong>
-        </div>
+        <div class="info"><h3>Feijoada Completa</h3><p>Toda quarta e sábado.</p><strong>22,00€</strong></div>
       </div>
-      <!-- Card Prato 3 -->
       <div class="prato">
         <img src="img/peito de frango.jpg" alt="Frango">
-        <div class="info">
-          <h3>Frango Grelhado</h3>
-          <p>Frango grelhado com legumes e arroz integral.</p>
-          <strong>20,00€</strong>
-        </div>
+        <div class="info"><h3>Frango à Parmegiana</h3><p>Molho de tomate e queijo derretido.</p><strong>20,00€</strong></div>
       </div>
-      <!-- Card Prato 4 -->
       <div class="prato">
         <img src="img/lasanha.png" alt="Lasanha">
-        <div class="info">
-          <h3>Lasanha à Bolonhesa</h3>
-          <p>Lasanha com molho bolonhesa e queijo gratinado.</p>
-          <strong>21,50€</strong>
-        </div>
+        <div class="info"><h3>Lasanha Caseira</h3><p>Feita no forno a lenha.</p><strong>21,50€</strong></div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION MENU GRUPOS    2-->
-  <section id="menu_grupos" class="container section">
-    <h1>Menu Grupos</h1>
-    <div class="sugestoes-grupo">
-      <!-- Card Sugestão 1 -->
+  <!-- MENU GRUPOS -->
+  <section id="menu_grupos" class="section container">
+    <h1>Menu para Grupos</h1>
+    <div class="cards">
       <div class="card-sugestao">
-        <img src="./img/Arroz de Marisco.webp" alt="arroz de marisco">
-        <h2>Arroz de marisco</h2>
-        <p>Variedade de peixes e mariscos com acompanhamentos.</p>
-        <strong>30,00€</strong>
+        <img src="./img/Arroz de Marisco.webp" alt="Arroz de Marisco">
+        <div class="info"><h2>Arroz de Marisco (mín. 2 pessoas)</h2><p>Variedade de mariscos frescos.</p><strong>30,00€ /pessoa</strong></div>
       </div>
-      <!-- Card Sugestão 2 -->
       <div class="card-sugestao">
-        <img src="./img/arroz tamboril.jpg" alt="arroz de tamboril">
-        <h2>Arroz de Tamboril</h2>
-        <p>Arroz de Tamboril Cremoso  .</p>
-        <strong>25,00€</strong>
+        <img src="./img/arroz tamboril.jpg" alt="Arroz de Tamboril">
+        <div class="info"><h2>Arroz de Tamboril</h2><p>Cremoso e cheio de sabor.</p><strong>25,00€ /pessoa</strong></div>
       </div>
-
-      <!-- Card Sugestão 2 -->
       <div class="card-sugestao">
-        <img src="./img/bacalhau.jpg" alt="Bacalhau Grelhado">
-        <h2>Bacalhau</h2>
-        <p>Bacalhau e molhos variados e saladas.</p>
-        <strong>20,00€</strong>
+        <img src="./img/bacalhau.jpg" alt="Bacalhau">
+        <div class="info"><h2>Bacalhau à Gomes de Sá</h2><p>Para grupos a partir de 4 pessoas.</p><strong>20,00€ /pessoa</strong></div>
       </div>
-
-      <!-- Card Sugestão 2 -->
       <div class="card-sugestao">
         <img src="./img/entrecosto.webp" alt="Entrecosto">
-        <h2>Entrecosto</h2>
-        <p>Entrecosto com batas fritas e arroz.</p>
-        <strong>20,00€</strong>
+        <div class="info"><h2>Entrecosto no Forno</h2><p>Com batata frita e arroz.</p><strong>20,00€ /pessoa</strong></div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION RESERVAS FORMULARIO  3-->
-  <section id="reservas" class="container section">
-    <h1>Faça sua Reserva</h1>
-    <form class="form-reserva" id="form" >
-      <div class="campo">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name">
+  <!-- ENTRADAS -->
+  <section id="entradas" class="section container">
+    <h1>Entradas</h1>
+    <div class="cards">
+      <div class="prato">
+        <img src="img/amejoas.jpg" alt="Ameijôas">
+        <div class="info"><h3>Ameijôas à Bulhão Pato</h3><p>Clássico português.</p><strong>18,00€</strong></div>
       </div>
-      <div class="campo">
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" >
+      <div class="prato">
+        <img src="img/camarao.jpg" alt="Camarão">
+        <div class="info"><h3>Camarão al Ajillo</h3><p>Camarão fresco ao alho e azeite.</p><strong>7,50€</strong></div>
       </div>
-      <div class="campo">
-        <label for="data">Data:</label>
-        <input type="date" id="data" name="data" >
-      </div>
-      <div class="campo">
-        <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora"  >
-      </div>
-      <div class="campo">
-        <label for="message" > Messagem: Nº de Pessoas:</label>
-        <input type="text" id="message" name="message"  >
-      </div>
+    </div>
+  </section>
 
-      <button type="submit" id="btn-send" onclick="emailEmail()">Reservar Agora</button>
+  <!-- SOBREMESAS -->
+  <section id="sobremesas" class="section container">
+    <h1>Sobremesas</h1>
+    <div class="cards">
+      <div class="prato">
+        <img src="img/baba de camelo.jpg" alt="Baba de camelo">
+        <div class="info"><h3>Baba de Camelo</h3><p>Doce de leite com biscoito.</p><strong>5,00€</strong></div>
+      </div>
+      <div class="prato">
+        <img src="img/muss.webp" alt="Mousse">
+        <div class="info"><h3>Mousse de Chocolate Belga</h3><p>Com raspas de chocolate.</p><strong>5,50€</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEBIDAS -->
+  <section id="bebidas" class="section container">
+    <h1>Bebidas</h1>
+    <div class="cards">
+      <div class="prato">
+        <img src="img/suco natural.jpg" alt="Suco">
+        <div class="info"><h3>Suco Natural</h3><p>Laranja, abacaxi, morango ou manga.</p><strong>3,50€</strong></div>
+      </div>
+      <div class="prato">
+        <img src="img/caipirinha-2.webp" alt="Caipirinha">
+        <div class="info"><h3>Caipirinha Tradicional</h3><p>Limão, açúcar e cachaça.</p><strong>6,00€</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAS -->
+  <section id="reservas" class="section container">
+    <h1>Faça sua Reserva</h1>
+    <form class="form-reserva" id="formReserva">
+      <div class="campo">
+        <label>Nome completo</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="campo">
+        <label>Telefone / WhatsApp</label>
+        <input type="tel" name="phone" placeholder="(00) 00000-0000" required>
+      </div>
+      <div class="campo">
+        <label>Data</label>
+        <input type="date" name="date" required>
+      </div>
+      <div class="campo">
+        <label>Hora</label>
+        <input type="time" name="time" required>
+      </div>
+      <div class="campo">
+        <label>Nº de pessoas</label>
+        <input type="number" name="people" min="1" placeholder="Quantas pessoas?" required>
+      </div>
+      <div class="campo">
+        <label>Mensagem (opcional)</label>
+        <textarea name="message" rows="4"></textarea>
+      </div>
+      <button type="submit">Reservar Mesa</button>
     </form>
   </section>
 
-  <!-- SECTION ENTRADAS       4-->
-  <section id="entradas" class="container section">
-    <h1>Entradas</h1>
-    <div class="cards">
-      <!-- Card Entrada 1 -->
-      <div class="prato">
-        <img src="img/amejoas.jpg" alt="Ameijoas">
-        <div class="info">
-          <h3>Ameijoas a Bulhao Pato</h3>
-          <p>Ameijoas tradicionais portuguesas.</p>
-          <strong>18,00€</strong>
-        </div>
-      </div>
-      <!-- Card Entrada 2 -->
-      <div class="prato">
-        <img src="img/camarao.jpg" alt="Camarao">
-        <div class="info">
-          <h3>Camarao</h3>
-          <p>Camarao Fresco.</p>
-          <strong>7,50€</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION SOBREMESAS     5-->
-  <section id="sobremesas" class="container section">
-    <h1>Sobremesas</h1>
-    <div class="cards">
-      <!-- Card Sobremesa 1 -->
-      <div class="prato">
-        <img src="img/baba de camelo.jpg" alt="Baba de camelo">
-        <div class="info">
-          <h3>Baba de Camelo</h3>
-          <p>Baba de Camelo Cremosa.</p>
-          <strong>5,00€</strong>
-        </div>
-      </div>
-      <!-- Card Sobremesa 2 -->
-      <div class="prato">
-        <img src="img/muss.webp" alt="Mousse de Chocolate">
-        <div class="info">
-          <h3>Mousse de Chocolate</h3>
-          <p>Feita com chocolate meio amargo e raspas de cacau.</p>
-          <strong>5,50€</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION BEBIDAS        6-->
-  <section id="bebidas" class="container section">
-    <h1>Bebidas</h1>
-    <div class="cards">
-      <!-- Card Bebida 1 -->
-      <div class="prato">
-        <img src="img/suco natural.jpg" alt="Suco Natural">
-        <div class="info">
-          <h3>Suco Natural</h3>
-          <p>Opções de laranja, abacaxi, morango ou manga.</p>
-          <strong>3,50€</strong>
-        </div>
-      </div>
-      <!-- Card Bebida 2 -->
-      <div class="prato">
-        <img src="img/caipirinha-2.webp" alt="Caipirinha">
-        <div class="info">
-          <h3>Caipirinha</h3>
-          <p>Tradicional drink brasileiro com limão, açúcar e cachaça.</p>
-          <strong>6,00€</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION FOOTER        7-->
-  <section id="footer" class="container section">
-    <div>
-      <h3>Navegação</h3>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/cardapio">Cardápio</a></li>
-        <li><a href="/reserva">Reservas</a></li>
-        <li><a href="/contato">Contato</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Horário de Funcionamento</h3>
-      <ul>
-        <li>Seg - Sex: 11h às 22h</li>
-        <li>Sáb: 12h às 23h</li>
-        <li>Dom: 12h às 21h</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Contato</h3>
-      <p>Rua dos Sabores, 123 - Centro</p>
-      <p>Tel: (11) 1234-5678</p>
-      <div id="social"> Social Media:
-        <ul id="contato">
-          <li>
-            <a href="#" aria-label="Instagram" class="hover:text-white">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Facebook" class="hover:text-white">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="WhatsApp" class="hover:text-white">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </li>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div>
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Cardápio</a></li>
+          <li><a href="#reservas">Reservas</a></li>
         </ul>
       </div>
+      <div>
+        <h3>Horário</h3>
+        <ul>
+          <li>Seg – Sex: 11h às 22h</li>
+          <li>Sábado: 12h às 23h</li>
+          <li>Domingo: 12h às 21h</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <p>Rua dos Sabores, 123 – Centro</p>
+        <p>Tel: (11) 1234-5678</p>
+        <div id="social">
+          <ul>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- SCRIPTS ESCONDER O MENU-->
+  >
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    function fn_esconder_menu() {
-      document.querySelector("#menuMobile").classList.add("esconder");
-    }
-    function fn_mostrar_menu() {
-      document.querySelector("#menuMobile").classList.remove("esconder");
-    }
-  </script>
+    emailjs.init('n4WP7IxIyIBHFfWLn'); // sua public key
 
-  <!-- SCRIPTS  CDN -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript"> emailjs.init('n4WP7IxIyIBHFfWLn') </script>
+    // Menu mobile
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobileMenu');
+    const close = document.getElementById('closeMobile');
+    function toggleMenu() { menu.classList.toggle('active'); }
+    btn.onclick = toggleMenu;
+    close.onclick = toggleMenu;
 
-  <!-- SCRIPTS ENVIAR E-MAIL -->
-  <script>
-    /**  Enviar 0 */
-    const btn = document.getElementById('btn-send');
-    let name = document.querySelector("#name")
-    let message = document.querySelector("#message")
-    let data = document.querySelector("#data")
-    let hora = document.querySelector("#hora")
-    let telefone = document.querySelector("#telefone")
+    // Formulário
+    document.getElementById('formReserva').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btnSubmit = this.querySelector('button');
+      btnSubmit.textContent = 'Enviando...';
 
-    function emailEmail() {
-      /** 1 Validar   */
-      document.getElementById('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        if (!name.value) {
-          console.log("Erro preencher o campo nome")
-          alert("Erro preencher o campo nome")
-          return
-        }
-
-        if (!data.value) {
-          console.log("Erro preencher o campo data")
-          alert("Erro preencher o campo data")
-          return
-        }
-
-        if (!hora.value) {
-          console.log("Erro preencher o campo hora")
-          alert("Erro preencher o campo hora")
-          return
-        }
-
-        if (!telefone.value) {
-          console.log("Erro preencher o campo telefone")
-          alert("Erro preencher o campo telefone")
-          return
-        }
-
-        if (!message.value) {
-          console.log("Erro preencher o campo corpo do email")
-          alert("Erro preencher o campo corpo do email")
-          return
-        }
-
-        console.log(name.value)
-        console.log(message.value)
-      });
-  
-
-      /** 2 Enviar  */
-      document.getElementById('form').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        btn.value = 'Sending with success';
-
-        const serviceID = 'default_service';
-        const templateID = 'template_xrev5ps';
-
-        emailjs.sendForm(serviceID, templateID, this)
-          .then(() => {
-            btn.value = 'Success okay!';
-            alert('Success okay!');
-
-            /** 3 Enviar  */
-            document.getElementById('form').reset()
-          }, (err) => {
-            btn.value = 'Send Email';
-            alert(JSON.stringify(err));
-          });
-      });
-
-    }
+      emailjs.sendForm('default_service', 'template_xrev5ps', this)
+        .then(() => {
+          alert('Reserva enviada com sucesso! Entraremos em contato em breve.');
+          this.reset();
+          btnSubmit.textContent = 'Reservar Mesa';
+        }, (err) => {
+          alert('Erro ao enviar. Tente novamente.');
+          console.error(err);
+          btnSubmit.textContent = 'Reservar Mesa';
+        });
+    });
   </script>
 </body>
-
 </html>
